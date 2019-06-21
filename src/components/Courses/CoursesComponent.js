@@ -40,16 +40,8 @@ class CoursesComponent extends Component {
     render = () => {
         return (
             <>
-                {/* // <form onSubmit={this.handleSubmit}> */}
                 <h2>Courses</h2>
                 <CourseList courses={this.props.courses} />
-                {/* <h3>Add Course</h3>
-                <input type="text" value={this.state.course.title} onChange={this.handleChange} />
-                <button type="submit" >Save</button>
-                {this.props.courses.map(course => (
-                    <div key={course.title} >{course.title}</div>
-                ))} */}
-                {/* // </form> */}
             </>
         );
     }
