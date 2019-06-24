@@ -5,6 +5,8 @@ import * as authorActions from '../../redux/actions/authorActions';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import CourseList from './CourseList';
+import { Link } from 'react-router-dom';
+import Spinner from '../common/Spinner';
 class CoursesComponent extends Component {
     state = {
         course: {
@@ -41,6 +43,8 @@ class CoursesComponent extends Component {
         return (
             <>
                 <h2>Courses</h2>
+                <Spinner />
+                <Link to="course" ><button className="btn btn-primary " > Add Course</button></Link>
                 <CourseList courses={this.props.courses} />
             </>
         );
