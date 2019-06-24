@@ -26,9 +26,9 @@ export function saveCourse(course) {
 function loadCourseSuccess(courses) {
     return { type: actionTypes.LOAD_COURSES_SUCCESS, courses }
 }
-function createCourseSuccess(courses) {
-    return { type: actionTypes.CREATE_COURSE_SUCCESS, courses }
+function createCourseSuccess(course) {
+    return { type: actionTypes.CREATE_COURSE_SUCCESS, course }
 }
-function updateCourseSuccess(courses) {
-    return { type: actionTypes.UPDATE_COURSE_SUCCESS, courses }
+function updateCourseSuccess(course) {
+    return { type: actionTypes.UPDATE_COURSE_SUCCESS, course }
 }
