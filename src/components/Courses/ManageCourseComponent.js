@@ -35,7 +35,7 @@ function ManageCourseComponent({ courses, authors, loadAuthors, loadCourses, sav
     const handleSave = (event) => {
         event.preventDefault();
         saveCourse(course).then(() => {
-            history.push('./courses');
+            history.push('/courses');
         });
     }
 
@@ -58,10 +58,16 @@ ManageCourseComponent.propTypes = {
     saveCourse: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired
 }
-
-function mapStateToProps(state) {
+function getCourseDetailsBySlug(courses, slug) {
+    return courses.find(course => course.slug === slug) || null;
+}
+function mapStateToProps(state, ownProps) {
+    console.log(ownProps);
+    const slug = ownProps.match.params.slug;
+    const course = slug && state.courses.length ? getCourseDetailsBySlug(state.courses, slug) : newCourse;
     return {
-        course: newCourse,
+        // course: newCourse,
+        course,
         courses: state.courses,
         authors: state.authors
     }
