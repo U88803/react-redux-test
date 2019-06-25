@@ -7,6 +7,9 @@ import Header from './components/common/Header';
 import PageNotFound from './components/PageNotFound';
 import CoursesComponent from './components/Courses/CoursesComponent';
 import ManageCourseComponent from './components/Courses/ManageCourseComponent';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
 	return (
 		<div className="container">
@@ -19,6 +22,7 @@ const App = () => {
 				<Route path="/course" component={ManageCourseComponent} />
 				<Route component={PageNotFound} />
 			</Switch>
+			<ToastContainer />
 		</div>
 	);
 }

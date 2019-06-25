@@ -4,6 +4,8 @@ import { loadCourses, saveCourse } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
 import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
+import Spinner from '../common/Spinner';
+import { toast } from 'react-toastify';
 const newCourse = {
     id: null,
     title: "",
@@ -13,18 +15,21 @@ const newCourse = {
 function ManageCourseComponent({ courses, authors, loadAuthors, loadCourses, saveCourse, history, ...props }) {
     const [course, setCourse] = useState({ ...props.course });
     const [errors, setErrors] = useState({});
+    const [saving, setSaving] = useState(false);
     useEffect(() => {
         if (courses.length === 0) {
             loadCourses().catch(error => {
                 throw error;
             });
+        } else {
+            setCourse({ ...props.course })
         }
         if (authors.length === 0) {
             loadAuthors().catch(error => {
                 throw error;
             });
         }
-    }, []);
+    }, [props.course]);
     const handleChange = (event) => {
         const { name, value } = event.target;
         const newObject = { [name]: ((name === 'authorId') ? parseInt(value, 10) : value) }
@@ -34,19 +39,26 @@ function ManageCourseComponent({ courses, authors, loadAuthors, loadCourses, sav
     }
     const handleSave = (event) => {
         event.preventDefault();
+        setSaving(true);
         saveCourse(course).then(() => {
+            setSaving(false);
+            toast.success("Course Saved successfully");
             history.push('/courses');
         });
     }
 
     return (
-        <CourseForm
-            course={course}
-            errors={errors}
-            authors={authors}
-            onChange={handleChange}
-            onSave={handleSave}
-        />
+        courses.length === 0 || authors.length === 0 ? (<Spinner />) : (
+            <CourseForm
+                course={course}
+                errors={errors}
+                authors={authors}
+                onChange={handleChange}
+                onSave={handleSave}
+                saving={saving}
+            />
+        )
+
     );
 
 }

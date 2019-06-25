@@ -72,27 +72,11 @@
     },
     {
       "id": 11,
-      "title": "wwwwww",
-      "authorId": 1,
-      "category": "wewewe",
-      "createdAt": 1561015379026,
-      "slug": "wwwwww"
-    },
-    {
-      "id": 12,
-      "title": "new book on react",
-      "authorId": 1,
-      "category": "new category",
-      "createdAt": 1561024944402,
-      "slug": "new-book-on-react"
-    },
-    {
-      "id": 13,
-      "title": "new book on react vol-2",
-      "authorId": 2,
-      "category": "new category",
-      "createdAt": 1561025734057,
-      "slug": "new-book-on-react-vol-2"
+      "title": "errrrrrr",
+      "authorId": 3,
+      "category": "weerer",
+      "createdAt": 1561370570539,
+      "slug": "errrrrrr"
     }
   ],
   "authors": [

@@ -40,12 +40,19 @@ class CoursesComponent extends Component {
         this.setState({ course: { title: "" } });
     }
     render = () => {
+        const { loading } = this.props;
         return (
             <>
                 <h2>Courses</h2>
-                <Spinner />
-                <Link to="course" ><button className="btn btn-primary " > Add Course</button></Link>
-                <CourseList courses={this.props.courses} />
+                {loading ?
+                    <Spinner /> :
+                    <>
+                        <Link to="course" ><button className="btn btn-primary " > Add Course</button></Link>
+                        <CourseList courses={this.props.courses} />
+                    </>
+                }
+
+
             </>
         );
     }
@@ -66,7 +73,8 @@ function mapStateToProps(state) {
                     authorName: state.authors.find(author => author.id === course.authorId).name
                 }
             }),
-        authors: state.authors
+        authors: state.authors,
+        loading: state.apiCallsInProgress > 0
     }
 }
 function mapDispatchToProps(dispatch) {
